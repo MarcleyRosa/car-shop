@@ -20,8 +20,9 @@ class CarsController {
     try {
       const newCar = await this.service.create(car);
 
-      return this.res.status(201).json({ id: newCar, ...car });
+      return this.res.status(201).json(newCar);
     } catch (error) {
+      console.log(error);
       this.next(error);
     }
   }

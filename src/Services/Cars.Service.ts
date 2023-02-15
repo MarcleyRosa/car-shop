@@ -16,9 +16,9 @@ class CarsService {
 
     const newCar = await carODM.create(car);
 
-    // return this.createCarDomain(newCar);
+    const newDomain = this.createCarDomain(newCar);
 
-    return newCar.id;
+    return newDomain;
   }
 
   public async findAll() {

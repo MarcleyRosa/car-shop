@@ -1,86 +1,29 @@
 import ICar from '../Interfaces/ICar';
+import Vehicle from './Vehicle';
 
-class Car {
-  protected _id: string | undefined;
-  protected _model: string;
-  protected _year: number;
-  protected _color: string; 
-  protected _status: boolean;
-  protected _buyValue: number;  
-  protected _doorsQty: number | undefined;
-  protected _seatsQty: number | undefined;
+class Car extends Vehicle {
+  private doorsQty: number | undefined;
+  private seatsQty: number | undefined;
 
   constructor(car: ICar) {
-    const { id, model, year, color, status, buyValue, doorsQty, seatsQty } = car;
-    this._id = id || undefined;
-    this._model = model;
-    this._year = year;
-    this._color = color;
-    this._status = status || false;
-    this._buyValue = buyValue;
-    this._doorsQty = doorsQty;
-    this._seatsQty = seatsQty;
-  } 
-
-  protected get id() {
-    return this._id;
+    super(car);
+    const { doorsQty, seatsQty } = car;
+    this.doorsQty = doorsQty;
+    this.seatsQty = seatsQty;
   }
 
-  protected set model(model: string) {
-    this._model = model;
+  public setDoorsQty(doorsQty: number) {
+    this.doorsQty = doorsQty;
   }
-
-  protected get model() {
-    return this._model;
+  public getDoorsQty() {
+    return this.doorsQty;
   }
-
-  protected set year(year: number) {
-    this._year = year;
+  public setSeatsQty(seatsQty: number) {
+    this.seatsQty = seatsQty;
   }
-
-  protected get year() {
-    return this._year;
+  public getSeatsQty() {
+    return this.seatsQty;
   }
-
-  protected set color(color: string) {
-    this._color = color;
-  }
-
-  protected get color() {
-    return this._color;
-  }
-
-  protected set status(status: boolean) {
-    this._status = status;
-  }
-
-  protected get status() {
-    return this._status;
-  }
-
-  protected set buyValue(buyValue: number) {
-    this._buyValue = buyValue;
-  }
-
-  protected get buyValue() {
-    return this._buyValue;
-  }
-
-  // set doorsQty(doorsQty) {
-  //   this._doorsQty = doorsQty;
-  // }
-
-  // get doorsQty() {
-  //   return this._doorsQty;
-  // } 
-
-  // set seatsQty(seatsQty) {
-  //   this._seatsQty = seatsQty;
-  // }
-
-  // get seatsQty() {
-  //   return this._seatsQty;
-  // }
 }
 
 export default Car;
