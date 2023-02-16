@@ -49,11 +49,9 @@ class MotorcyclesService {
   public async updateById(id: string, motorcycle: IMotorcycle) {
     const motorcycleODM = new MotorcycleODM();
 
-    const newCar = await motorcycleODM.findById(id);
-
-    if (!newCar) throw new Exception(404, this.notFound);
-
     const updateMotorcycle = await motorcycleODM.updateById(id, motorcycle);
+    
+    if (!updateMotorcycle) throw new Exception(404, this.notFound);
 
     return updateMotorcycle;
   }

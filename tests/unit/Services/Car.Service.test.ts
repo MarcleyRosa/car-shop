@@ -67,4 +67,17 @@ describe('Deveria cria car', function () {
 
     sinon.restore();
   });
+
+  it('deveria atualizar um carro usando id', async function () {
+    const newCar: Car = new Car(mockCar[1]);
+
+    sinon.stub(Model, 'findByIdAndUpdate').resolves(newCar);
+
+    const service = new CarsService();
+    const result = await service.updateById('6348513f34c397abcad040b2', mockCar[0]);
+
+    expect(result).to.be.deep.equal(mockCar[0]);
+
+    sinon.restore();
+  });
 });

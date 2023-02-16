@@ -24,7 +24,7 @@ class AbstractODM<T> {
   }
 
   public async updateById(id: string, car: UpdateQuery<T>) {
-    return this.model.updateMany({ id }, { $set: { ...car } });
+    return this.model.findByIdAndUpdate(id, { $set: { ...car } });
   }
 }
 

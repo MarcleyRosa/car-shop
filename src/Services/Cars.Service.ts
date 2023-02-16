@@ -49,11 +49,9 @@ class CarsService {
   public async updateById(id: string, car: ICar) {
     const carODM = new CarODM();
 
-    const newCar = await carODM.findById(id);
-
-    if (!newCar) throw new Exception(404, 'Car not found');
-
     const updateCar = await carODM.updateById(id, car);
+    
+    if (!updateCar) throw new Exception(404, 'Car not found');
 
     return updateCar;
   }
