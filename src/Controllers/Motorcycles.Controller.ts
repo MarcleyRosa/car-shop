@@ -26,26 +26,26 @@ class MotorcycleController {
     }
   }
 
-  //   public async findAll() {
-  //     try {
-  //       const findAllCars = await this.service.findAll();
+  public async findAll() {
+    try {
+      const findAllCars = await this.service.findAll();
 
-  //       return this.res.status(200).json(findAllCars);
-  //     } catch (error) {
-  //       this.next(error);
-  //     }
-  //   }
+      return this.res.status(200).json(findAllCars);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 
-  //   public async findById() {
-  //     const { id } = this.req.params;
-  //     try {
-  //       const findCarsById = await this.service.findById(id);
+  public async findById() {
+    const { id } = this.req.params;
+    try {
+      const findCarsById = await this.service.findById(id);
 
-  //       return this.res.status(200).json(findCarsById);
-  //     } catch (error) {
-  //       this.next(error);
-  //     }
-  //   }
+      return this.res.status(200).json(findCarsById);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 
   //   public async updateById() {
   //     const { id } = this.req.params;
