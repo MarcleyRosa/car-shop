@@ -47,16 +47,16 @@ class MotorcycleController {
     }
   }
 
-  //   public async updateById() {
-  //     const { id } = this.req.params;
-  //     const car: ICar = this.req.body;
-  //     try {
-  //       await this.service.updateById(id, car);
+  public async updateById() {
+    const { id } = this.req.params;
+    const motorcycle: IMotorcycle = this.req.body;
+    try {
+      await this.service.updateById(id, motorcycle);
 
-//       return this.res.status(200).json({ id, ...car });
-//     } catch (error) {
-//       this.next(error);
-//     }
-//   }
+      return this.res.status(200).json({ id, ...motorcycle });
+    } catch (error) {
+      this.next(error);
+    }
+  }
 }
 export default MotorcycleController;

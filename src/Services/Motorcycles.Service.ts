@@ -4,7 +4,7 @@ import IMotorcycle from '../Interfaces/IMotorcycles';
 import MotorcycleODM from '../Models/MotorcyclesODM';
 
 class MotorcyclesService {
-  private carNotFound = 'Motorcycle not found';
+  private notFound = 'Motorcycle not found';
   private createMotorcycleDomain(newMotorcycle: IMotorcycle | null): Motorcycles | null {
     if (newMotorcycle) {
       return new Motorcycles(newMotorcycle);
@@ -23,11 +23,11 @@ class MotorcyclesService {
   }
 
   public async findAll() {
-    const carODM = new MotorcycleODM();
+    const motorcycleODM = new MotorcycleODM();
 
-    const newCar = await carODM.findAll();
+    const newCar = await motorcycleODM.findAll();
 
-    if (!newCar.length) throw new Exception(404, this.carNotFound);
+    if (!newCar.length) throw new Exception(404, this.notFound);
 
     const getDomain = newCar.map((e) => this.createMotorcycleDomain(e));
 
@@ -35,15 +35,27 @@ class MotorcyclesService {
   }
 
   public async findById(id: string) {
-    const carODM = new MotorcycleODM();
+    const motorcycleODM = new MotorcycleODM();
 
-    const newCar = await carODM.findById(id);
+    const newCar = await motorcycleODM.findById(id);
 
-    if (!newCar) throw new Exception(404, this.carNotFound);
+    if (!newCar) throw new Exception(404, this.notFound);
 
     const getDomain = this.createMotorcycleDomain(newCar);
 
     return getDomain;
+  }
+
+  public async updateById(id: string, motorcycle: IMotorcycle) {
+    const motorcycleODM = new MotorcycleODM();
+
+    const newCar = await motorcycleODM.findById(id);
+
+    if (!newCar) throw new Exception(404, this.notFound);
+
+    const updateMotorcycle = await motorcycleODM.updateById(id, motorcycle);
+
+    return updateMotorcycle;
   }
 }
 
