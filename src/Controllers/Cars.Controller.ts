@@ -22,7 +22,6 @@ class CarsController {
 
       return this.res.status(201).json(newCar);
     } catch (error) {
-      console.log(error);
       this.next(error);
     }
   }
