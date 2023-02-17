@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import IMotorcycle from '../Interfaces/IMotorcycles';
+import IMotorcycle from '../Interfaces/IMotorcycle';
 import MotorcycleService from '../Services/Motorcycles.Service';
 
 class MotorcycleController {

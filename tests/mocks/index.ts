@@ -1,5 +1,5 @@
 import ICar from '../../src/Interfaces/ICar';
-import IMotorcycle from '../../src/Interfaces/IMotorcycles';
+import IMotorcycle from '../../src/Interfaces/IMotorcycle';
 
 export const mockMotorcycle: IMotorcycle[] = [
   {

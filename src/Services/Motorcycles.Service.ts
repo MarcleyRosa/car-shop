@@ -1,6 +1,6 @@
 import Motorcycles from '../Domains/Motorcycle';
 import Exception from '../Exceptions/Exception';
-import IMotorcycle from '../Interfaces/IMotorcycles';
+import IMotorcycle from '../Interfaces/IMotorcycle';
 import MotorcycleODM from '../Models/MotorcyclesODM';
 
 class MotorcyclesService {
