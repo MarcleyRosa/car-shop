@@ -3,30 +3,7 @@ import sinon from 'sinon';
 import { Model } from 'mongoose';
 import MotorcyclesService from '../../../src/Services/Motorcycles.Service';
 import Motorcycles from '../../../src/Domains/Motorcycle';
-import IMotorcycle from '../../../src/Interfaces/IMotorcycles';
-
-const mockMotorcycle: IMotorcycle[] = [
-  {
-    id: '6348513f34c397abcad040b2',
-    model: 'Honda Cb 400f Hornet',
-    year: 2010,
-    color: 'Black',
-    status: true,
-    buyValue: 17.000,
-    category: 'Street',
-    engineCapacity: 400,
-  },
-  {
-    id: '6348513f34c397abcad040b3',
-    model: 'Honda Cb 600f Hornet',
-    year: 2005,
-    color: 'Yellow',
-    status: true,
-    buyValue: 30.000,
-    category: 'Street',
-    engineCapacity: 600,
-  },
-];
+import { mockMotorcycle } from '../../mocks';
 
 describe('Motorcycle Service', function () {
   describe('Deveria cria motorcycle', function () {
