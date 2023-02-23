@@ -27,7 +27,7 @@ class AbstractService<T> {
     if (!newCar.length) throw new Exception(404, `${this.type} not found`);
 
     const getDomain = newCar
-      .map((vehicle: IVehicle) => this.createDomain.Vehicle(vehicle as unknown as IVehicle, this.type));
+      .map((vehicle) => this.createDomain.Vehicle(vehicle as unknown as IVehicle, this.type));
 
     return getDomain;
   }
