@@ -1,74 +1,54 @@
-// import Exception from '../Exceptions/Exception';
-// import IVehicle from '../Interfaces/IVehicle';
-// import AbstractODM from '../Models/AbstractODM';
+import { UpdateQuery } from 'mongoose';
+import Exception from '../Exceptions/Exception';
+import IVehicle from '../Interfaces/IVehicle';
+import AbstractODM from '../Models/AbstractODM';
+import CreateDomain from '../util/CreateDomain';
 
-// class AbstractService<T, V> {
-//   private notFound: string;
-//   private ODM;
-//   private VehicleDomain: IVehicle;
-//   constructor(ODM: AbstractODM<T>, VehicleDomain: IVehicle, notFound: string) {
-//     this.ODM = new ODM();
-//     this.notFound = notFound;
-//     this.VehicleDomain = VehicleDomain;
-//   }
-//   private createCarDomain(newCar: T | null): V | null {
-//     if (newCar) {
-//       return new this.VehicleDomain(newCar);
-//     }
-//     return null;
-//   }
+class AbstractService<T> {
+  private type: string;
+  private ODM;
+  private createDomain = new CreateDomain();
+  constructor(ODM: AbstractODM<T>, type: string) {
+    this.ODM = ODM;
+    this.type = type;
+  }
 
-//   public async create(car: T) {
-//     const newCar = await this.ODM.create(car);
+  public async create(car: T) {
+    const newVehicle = await this.ODM.create(car);
 
-//     const newDomain = this.createCarDomain(newCar);
+    const newDomain = this.createDomain.Vehicle(newVehicle as unknown as IVehicle, this.type);
 
-//     return newDomain;
-//   }
+    return newDomain;
+  }
 
-//   public async findAll() {
-//     const newCar = await this.ODM.findAll();
+  public async findAll() {
+    const newCar = await this.ODM.findAll();
 
-//     if (!newCar.length) throw new Exception(404, this.notFound);
+    if (!newCar.length) throw new Exception(404, `${this.type} not found`);
 
-//     const getDomain = newCar.map((vehicle: T) => this.createCarDomain(vehicle));
+    const getDomain = newCar
+      .map((vehicle: IVehicle) => this.createDomain.Vehicle(vehicle as unknown as IVehicle, this.type));
 
-//     return getDomain;
-//   }
+    return getDomain;
+  }
 
-//   public async findById(id: string) {
-//     const newCar = await this.ODM.findById(id);
+  public async findById(id: string) {
+    const newCar = await this.ODM.findById(id);
 
-//     if (!newCar) throw new Exception(404, this.notFound);
+    if (!newCar) throw new Exception(404, `${this.type} not found`);
 
-//     const getDomain = this.createCarDomain(newCar);
+    const getDomain = this.createDomain.Vehicle(newCar as unknown as IVehicle, this.type);
 
-//     return getDomain;
-//   }
+    return getDomain;
+  }
 
-//   public async updateById(id: string, car: T) {
-//     const newCar = await this.ODM.findById(id);
+  public async updateById(id: string, car: UpdateQuery<T>) {
+    const updateCar = await this.ODM.updateById(id, car);
+    
+    if (!updateCar) throw new Exception(404, `${this.type} not found`);
 
-//     if (!newCar) throw new Exception(404, this.notFound);
+    return updateCar;
+  }
+}
 
-//     const updateCar = await this.ODM.updateById(id, car);
-
-//     return updateCar;
-//   }
-// }
-
-// export default AbstractService;
-
-// // import ICar from '../Interfaces/ICar';
-// // import Car from '../Domains/Car';
-// // import CarODM from '../Models/CarODM';
-// // import AbstractService from './Abstract.Service';
-
-// // class CarsService extends AbstractService<ICar, Car> {
-// //   private carODM = new CarODM();
-// //   constructor() {
-// //     super(CarODM, Car as unknown as Car, 'Car not found');
-// //   }
-// // }
-
-// // export default CarsService;
+export default AbstractService;
