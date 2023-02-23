@@ -1,6 +1,7 @@
 # Boas-vindas ao repositório do projeto Car Shop!
 
 API para gerenciar uma concessionária de veículos.
+
 API em TypeScript na arquitetura MSC, aplicando os pilares de POO e utilizando o ODM Mongoose para se conectar com um banco de dados MongoDB.
 
 
