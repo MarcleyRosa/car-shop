@@ -1,5 +1,9 @@
 # Boas-vindas ao repositório do projeto Car Shop!
 
+API para gerenciar uma concessionária de veículos.
+API em TypeScript na arquitetura MSC, aplicando os pilares de POO e utilizando o ODM Mongoose para se conectar com um banco de dados MongoDB.
+
+
 Para realizar o projeto, atente-se a cada passo descrito a seguir.
 
 Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório.
@@ -39,7 +43,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 </details>
 
 <details>
-  <summary><strong>‼ Antes de começar a desenvolver</strong></summary>
+  <summary><strong>‼ Para rodar o projeto</strong></summary>
 
   1. Clone o repositório
 
@@ -52,8 +56,6 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   - `npm install`
 
 
-
-
   ##### Estrutura das pastas dentro de `src`
 
   ```tree
@@ -61,11 +63,13 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   ├── src/
   │   ├── Controllers/
   │   ├── Domains/
+  │   ├── Exceptions/
   │   ├── Interfaces/
-  │   ├── middlewares/
+  │   ├── Middlewares/
   │   ├── Models/
   │   ├── Routes/
   │   ├── Services/
+  │   ├── util/
   │   └── ...
   ├── tests/
   │   ├── unit/
@@ -80,7 +84,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 # Exemplo
 
-##- É possível cadastrado um carro atraves da rota /cars
+## É possível cadastrado um carro atraves da rota /cars
 
 
 
@@ -101,12 +105,12 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ```json
 {
-  "model": "Marea",
+  "model": "Fiat Uno",
   "year": 2002,
   "color": "Black",
   "status": true,
-  "buyValue": 15.990,
-  "doorsQty": 4,
-  "seatsQty": 5
+  "buyValue": 12.990,
+  "doorsQty": 8,
+  "seatsQty": 6
 }
 ```
