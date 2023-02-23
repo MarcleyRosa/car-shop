@@ -1,13 +1,112 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Boas-vindas ao repositório do projeto Car Shop!
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Para realizar o projeto, atente-se a cada passo descrito a seguir.
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório.
+
+# Orientações
+
+<details>
+  <summary><strong>🐳 Rodando no Docker vs Localmente</strong></summary>
+
+  ## 👉 Com Docker
+
+  > :information_source: Rode os serviços `node` e `db` com o comando `docker-compose up -d`.
+
+  - Lembre-se de parar o `mongo` se estiver usando localmente na porta padrão (`27017`), ou adapte, caso queria fazer uso da aplicação em containers
+  - Esses serviços irão inicializar um container chamado `car_shop` e outro chamado `car_shop_db`.
+  - A partir daqui você pode rodar o container `car_shop` via CLI ou abri-lo no VS Code.
+
+  > :information_source: Use o comando `docker exec -it car_shop bash`.
+
+  - Ele te dará acesso ao terminal interativo do container criado pelo compose, que está rodando em segundo plano.
+
+  > :information_source: Instale as dependências com `npm install` 
+  
+  - **⚠ Atenção:** Caso opte por utilizar o Docker, **TODOS** os comandos disponíveis no `package.json` (npm start, npm test, npm run dev, ...) devem ser executados **DENTRO** do container, ou seja, no terminal que aparece após a execução do comando `docker exec` citado acima. 
+
+  <img src="public/remote-container.png" width="800px" >
+
+  <br />
+  
+  ## 👉 Sem Docker
+
+  > :information_source: Instale as dependências com `npm install`
+  
+  **⚠ Atenção:** Para rodar o projeto desta forma, obrigatoriamente você deve ter o `node` instalado em seu computador.
+
+  <br>
+</details>
+
+<details>
+  <summary><strong>‼ Antes de começar a desenvolver</strong></summary>
+
+  1. Clone o repositório
+
+  - Use o comando: `git clone https://github.com/...`.
+  - Entre na pasta do repositório que você acabou de clonar:
+    - `cd car-shop`
+
+  2. Instale as dependências
+
+  - `npm install`
+
+
+
+
+  ##### Estrutura das pastas dentro de `src`
+
+  ```tree
+  .
+  ├── src/
+  │   ├── Controllers/
+  │   ├── Domains/
+  │   ├── Interfaces/
+  │   ├── middlewares/
+  │   ├── Models/
+  │   ├── Routes/
+  │   ├── Services/
+  │   └── ...
+  ├── tests/
+  │   ├── unit/
+  |   │      ├── Services/
+  |   │      ├── ...
+  |   └── ... 
+  └── ...
+  ```
+
+  <br>
+</details>
+
+# Exemplo
+
+##- É possível cadastrado um carro atraves da rota /cars
+
+
+
+- Os atributos necessários para criar um carro estão na tabela:
+
+| Atributos | Descrição |
+| :-------: | :-------- |
+| `id`   | _String_ contendo id do veículo |
+| `model`   | _String_ contendo modelo do veículo |
+| `year`    | _Number_ contendo ano de fabricação do veículo |
+| `color`   | _String_ contendo cor principal do veículo |
+| `status`  | _Booleano_ contendo status que define se um veículo pode ou não ser comprado _(este atributo deve ser opcional e se não passado, deve ser `false`)_ |
+| `buyValue` | _Number_ contendo valor de compra do veículo |
+| `doorsQty` | _Number_ contendo quantidade de portas de um carro |
+| `seatsQty` | _Number_ contendo quantidade de assentos de um carro |
+
+- O corpo da requisição poderá seguir o formato abaixo:
+
+```json
+{
+  "model": "Marea",
+  "year": 2002,
+  "color": "Black",
+  "status": true,
+  "buyValue": 15.990,
+  "doorsQty": 4,
+  "seatsQty": 5
+}
+```
