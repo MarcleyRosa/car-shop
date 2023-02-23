@@ -47,7 +47,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
   1. Clone o repositório
 
-  - Use o comando: `git clone https://github.com/...`.
+  - Use o comando: `git clone git@github.com:MarcleyRosa/car-shop.git`.
   - Entre na pasta do repositório que você acabou de clonar:
     - `cd car-shop`
 
